@@ -8,7 +8,7 @@ export const InvitationCard: React.FC = () => {
   const { couple, event, message, navigation } = weddingConfig;
 
   return (
-    <div className="w-full max-w-sm p-4 perspective-1000">
+    <div className="w-full max-w-xs p-3 perspective-1000">
       <motion.div
         className="relative bg-white rounded-xl shadow-2xl overflow-hidden border-2 border-wedding-gold/30"
         initial="hidden"
@@ -17,35 +17,35 @@ export const InvitationCard: React.FC = () => {
       >
         <div className="absolute inset-0 bg-pattern opacity-10 pointer-events-none" />
         <div className="absolute inset-0 border-double border-4 border-wedding-gold/20 m-2 rounded-lg pointer-events-none" />
-        
-        <OrnamentTop className="absolute top-0 left-0 w-full text-wedding-gold h-16 opacity-80" />
-        <OrnamentBottom className="absolute bottom-0 left-0 w-full text-wedding-gold h-16 opacity-80" />
 
-        <div className="relative z-10 flex flex-col items-center justify-center h-full px-5 py-8 text-center space-y-5">
-          
-          <motion.div custom={0} variants={contentVariants} className="space-y-1 mt-4">
-            <h2 className="text-lg text-wedding-gold font-persian-body">{message.greeting}</h2>
+        <OrnamentTop className="absolute top-0 left-0 w-full text-wedding-gold h-14 opacity-80" />
+        <OrnamentBottom className="absolute bottom-0 left-0 w-full text-wedding-gold h-14 opacity-80" />
+
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 py-6 text-center space-y-4">
+
+          <motion.div custom={0} variants={contentVariants} className="space-y-1 mt-3">
+            <h2 className="text-base text-wedding-gold font-persian-body">{message.greeting}</h2>
           </motion.div>
 
-          <motion.div custom={1} variants={contentVariants} className="space-y-4 my-2">
-            <h1 className="text-4xl font-persian-title text-wedding-dark drop-shadow-sm leading-tight">
+          <motion.div custom={1} variants={contentVariants} className="space-y-3 my-1">
+            <h1 className="text-3xl font-persian-title text-wedding-dark drop-shadow-sm leading-tight">
               {couple.bride}
             </h1>
-            <div className="flex items-center justify-center space-x-3 space-x-reverse text-wedding-gold">
-               <span className="h-px w-8 bg-current opacity-50"></span>
-               <span className="text-xl font-serif">و</span>
-               <span className="h-px w-8 bg-current opacity-50"></span>
+            <div className="flex items-center justify-center space-x-2 space-x-reverse text-wedding-gold">
+               <span className="h-px w-6 bg-current opacity-50"></span>
+               <span className="text-lg font-serif">و</span>
+               <span className="h-px w-6 bg-current opacity-50"></span>
             </div>
-            <h1 className="text-4xl font-persian-title text-wedding-dark drop-shadow-sm leading-tight">
+            <h1 className="text-3xl font-persian-title text-wedding-dark drop-shadow-sm leading-tight">
               {couple.groom}
             </h1>
           </motion.div>
 
-          <motion.div custom={2} variants={contentVariants} className="w-full px-8">
+          <motion.div custom={2} variants={contentVariants} className="w-full px-6">
             <div className="h-px bg-gradient-to-r from-transparent via-wedding-gold/40 to-transparent"></div>
           </motion.div>
 
-          <motion.div custom={3} variants={contentVariants} className="space-y-2 font-persian-body text-xl text-wedding-dark/90 leading-relaxed">
+          <motion.div custom={3} variants={contentVariants} className="space-y-1.5 font-persian-body text-base text-wedding-dark/90 leading-relaxed">
             {message.body.map((line, index) => (
               <p key={index} className={`${index > 1 ? 'font-bold text-wedding-dark' : 'text-wedding-dark/80'}`}>
                 {line}
@@ -53,18 +53,18 @@ export const InvitationCard: React.FC = () => {
             ))}
           </motion.div>
 
-          <motion.div custom={4} variants={contentVariants} className="w-full space-y-3 font-persian-body text-lg text-wedding-dark bg-wedding-gold/5 p-4 rounded-lg border border-wedding-gold/10">
-            <div className="flex items-center justify-between border-b border-wedding-gold/20 pb-2">
+          <motion.div custom={4} variants={contentVariants} className="w-full space-y-2 font-persian-body text-sm text-wedding-dark bg-wedding-gold/5 p-3 rounded-lg border border-wedding-gold/10">
+            <div className="flex items-center justify-between border-b border-wedding-gold/20 pb-1.5">
               <span className="text-wedding-gold font-bold">{event.dateLabel}</span>
               <span>{event.date}</span>
             </div>
 
-            <div className="flex items-center justify-between border-b border-wedding-gold/20 pb-2">
+            <div className="flex items-center justify-between border-b border-wedding-gold/20 pb-1.5">
               <span className="text-wedding-gold font-bold">{event.timeLabel}</span>
               <span>{event.time}</span>
             </div>
 
-            <div className="flex items-center justify-between border-b border-wedding-gold/20 pb-2">
+            <div className="flex items-center justify-between border-b border-wedding-gold/20 pb-1.5">
               <span className="text-wedding-gold font-bold">{event.locationLabel}</span>
               <span>{event.location}</span>
             </div>

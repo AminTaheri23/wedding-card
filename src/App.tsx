@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LoadingScreen } from './components/LoadingScreen';
 import { InvitationCard } from './components/InvitationCard';
-import { FallingPetals } from './components/FallingPetals';
 import { AppState } from './types';
 import { weddingConfig } from './config/weddingConfig';
 import { useAudio } from './hooks/useAudio';
@@ -27,7 +26,6 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-wedding-cream flex flex-col items-center justify-center overflow-hidden relative">
       <audio ref={audioRef} loop preload="auto" />
-      <FallingPetals />
 
       <AnimatePresence mode="wait">
         {appState === AppState.LOADING && (
@@ -46,21 +44,21 @@ const App: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.1 }}
-            className="flex flex-col items-center z-40 p-8 text-center"
+            className="flex flex-col items-center z-40 p-6 text-center"
           >
-            <div className="mb-8 relative w-24 h-24">
+            <div className="mb-6 relative w-20 h-20">
                 <div className="absolute inset-0 bg-wedding-gold opacity-20 rounded-full animate-ping"></div>
                 <div className="absolute inset-0 border-2 border-wedding-gold rounded-full flex items-center justify-center bg-white shadow-lg">
-                    <span className="text-3xl">💌</span>
+                    <span className="text-2xl">💌</span>
                 </div>
             </div>
-            
-            <h1 className="text-3xl font-persian-title text-wedding-dark mb-4">کارت دعوت شما</h1>
-            <p className="text-wedding-dark/60 font-persian-body text-lg mb-8">{weddingConfig.message.invitationText}</p>
-            
+
+            <h1 className="text-2xl font-persian-title text-wedding-dark mb-3">کارت دعوت شما</h1>
+            <p className="text-wedding-dark/60 font-persian-body text-base mb-6">{weddingConfig.message.invitationText}</p>
+
             <button
               onClick={handleOpenInvitation}
-              className="bg-wedding-gold text-white px-10 py-3 rounded-full font-persian-title text-xl shadow-lg hover:bg-yellow-600 transition-transform active:scale-95"
+              className="bg-wedding-gold text-white px-8 py-2.5 rounded-full font-persian-title text-lg shadow-lg hover:bg-yellow-600 transition-transform active:scale-95"
             >
               مشاهده کارت
             </button>
