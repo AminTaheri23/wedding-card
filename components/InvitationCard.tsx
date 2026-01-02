@@ -102,7 +102,7 @@ export const InvitationCard: React.FC = () => {
 
             <div className="flex items-center justify-between border-b border-wedding-gold/20 pb-2">
               <span className="text-wedding-gold font-bold">{WEDDING_DATA.locationLabel}</span>
-              <span className="w-full text-base">تهران</span>
+              <span>تهران</span>
             </div>
           </motion.div>
 
