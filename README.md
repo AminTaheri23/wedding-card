@@ -53,6 +53,8 @@ wedding-card/
 
 ## ⚙️ Configuration
 
+**Audio:** Place your MP3 file in `public/assets/wedding-music.mp3`
+
 All wedding details are configurable in `src/config/weddingConfig.ts`:
 
 ```typescript

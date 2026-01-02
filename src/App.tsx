@@ -3,14 +3,12 @@ import { LoadingScreen } from './components/LoadingScreen';
 import { InvitationCard } from './components/InvitationCard';
 import { AppState } from './types';
 import { weddingConfig } from './config/weddingConfig';
-import { useAudioLoader } from './hooks/useAudioLoader';
-import { useAudioPlayer } from './hooks/useAudioPlayer';
+import { useAudio } from './hooks/useAudio';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const App: React.FC = () => {
   const [appState, setAppState] = useState<AppState>(AppState.LOADING);
-  const { loadingProgress, loadAudio } = useAudioLoader();
-  const { playAudio } = useAudioPlayer();
+  const { loadingProgress, audioRef, loadAudio, playAudio } = useAudio();
 
   useEffect(() => {
     if (appState === AppState.LOADING) {
@@ -27,6 +25,8 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-wedding-cream flex flex-col items-center justify-center overflow-hidden relative">
+      <audio ref={audioRef} loop preload="auto" />
+      
       <AnimatePresence mode="wait">
         {appState === AppState.LOADING && (
           <motion.div 

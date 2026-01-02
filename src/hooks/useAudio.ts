@@ -1,13 +1,15 @@
 import { useState, useRef, useCallback } from 'react';
 
-interface UseAudioLoaderReturn {
+interface UseAudioReturn {
   loadingProgress: number;
   isLoaded: boolean;
-  loadAudio: (url: string) => Promise<void>;
   audioRef: React.RefObject<HTMLAudioElement>;
+  loadAudio: (url: string) => Promise<void>;
+  playAudio: (volume?: number) => Promise<void>;
+  pauseAudio: () => void;
 }
 
-export const useAudioLoader = (): UseAudioLoaderReturn => {
+export const useAudio = (): UseAudioReturn => {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -57,7 +59,7 @@ export const useAudioLoader = (): UseAudioLoaderReturn => {
       setIsLoaded(true);
 
     } catch (error) {
-      console.warn("Audio pre-fetch failed (likely CORS), switching to native loader:", error);
+      console.warn("Audio pre-fetch failed, switching to native loader:", error);
       
       if (audioRef.current) {
         audioRef.current.src = url;
@@ -102,10 +104,28 @@ export const useAudioLoader = (): UseAudioLoaderReturn => {
     }
   }, [isLoaded]);
 
+  const playAudio = useCallback(async (volume = 0.5): Promise<void> => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(e => console.log("Playback prevented by browser:", e));
+      }
+    }
+  }, []);
+
+  const pauseAudio = useCallback((): void => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
+  }, []);
+
   return {
     loadingProgress,
     isLoaded,
+    audioRef,
     loadAudio,
-    audioRef
+    playAudio,
+    pauseAudio
   };
 };
