@@ -1,9 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
-interface LoadingScreenProps {
-  progress: number;
-}
+import { LoadingScreenProps } from '../../types';
 
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress }) => {
   return (

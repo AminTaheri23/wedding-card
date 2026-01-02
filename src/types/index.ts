@@ -13,3 +13,11 @@ export enum AppState {
   OPENING,
   OPENED
 }
+
+export interface LoadingScreenProps {
+  progress: number;
+}
+
+export interface OrnamentProps {
+  className?: string;
+}

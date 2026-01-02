@@ -4,56 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>کارت دعوت عروسی</title>
-    <!-- Keeping Tailwind CDN for simplicity in this setup, though a build step could allow local installation -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'wedding-gold': '#D4AF37',
-              'wedding-cream': '#FDFBF7',
-              'wedding-dark': '#2C3E50',
-              'wedding-red': '#800000',
-            },
-            fontFamily: {
-              'persian-title': ['Lalezar', 'cursive'],
-              'persian-body': ['Scheherazade New', 'serif'],
-            },
-            backgroundImage: {
-              'pattern': "url('https://www.transparenttextures.com/patterns/arabesque.png')",
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      body {
-        background-color: #FDFBF7;
-        overflow: hidden; /* Prevent scrolling during animations */
-        touch-action: manipulation;
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "vite": "https://esm.sh/vite@^7.3.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
+  </head>
   <body>
     <div id="root"></div>
-    <!-- Vite entry point -->
-    <script type="module" src="/index.tsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
