@@ -20,6 +20,10 @@ export interface WeddingConfig {
     url: string;
     volume: number;
   };
+  navigation: {
+    neshan: string;
+    googleMaps: string;
+  };
 }
 
 export const weddingConfig: WeddingConfig = {
@@ -28,9 +32,9 @@ export const weddingConfig: WeddingConfig = {
     bride: "مهتا"
   },
   event: {
-    date: "جمعه، ۲۴ شهریور ۱۴۰۳",
-    time: "از ساعت ۱۹ الی ۲۳",
-    location: "تهران",
+    date: "پنجشنبه، ۲۳ بهمن ۱۴۰۳",
+    time: "از ساعت ۱۱:۳۰ صبح الی ۱۴:۰۰ ظهر",
+    location: "آدرس\nشهرک آزمایش، بلوار آریافر، خیابان معتمدی، پلاک ۲۰\n",
     dateLabel: "📅 تاریخ:",
     timeLabel: "⏰ ساعت:",
     locationLabel: "📍 مکان:"
@@ -49,5 +53,9 @@ export const weddingConfig: WeddingConfig = {
   audio: {
     url: "./assets/wedding-music.mp3",
     volume: 0.5
+  },
+  navigation: {
+    neshan: "https://nshn.ir/f9_bv_CqVx4bPL",
+    googleMaps: "https://maps.app.goo.gl/6LSK9L1ucMmy7wcx9"
   }
 };

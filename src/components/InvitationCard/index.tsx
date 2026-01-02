@@ -5,7 +5,7 @@ import { OrnamentTop, OrnamentBottom } from '../Ornament';
 import { cardVariants, contentVariants } from '../../utils/animationVariants';
 
 export const InvitationCard: React.FC = () => {
-  const { couple, event, message } = weddingConfig;
+  const { couple, event, message, navigation } = weddingConfig;
 
   return (
     <div className="w-full max-w-sm p-4 perspective-1000">
@@ -33,7 +33,7 @@ export const InvitationCard: React.FC = () => {
             </h1>
             <div className="flex items-center justify-center space-x-3 space-x-reverse text-wedding-gold">
                <span className="h-px w-8 bg-current opacity-50"></span>
-               <span className="text-xl font-serif">&</span>
+               <span className="text-xl font-serif">و</span>
                <span className="h-px w-8 bg-current opacity-50"></span>
             </div>
             <h1 className="text-4xl font-persian-title text-wedding-dark drop-shadow-sm leading-tight">
@@ -68,6 +68,25 @@ export const InvitationCard: React.FC = () => {
               <span className="text-wedding-gold font-bold">{event.locationLabel}</span>
               <span>{event.location}</span>
             </div>
+          </motion.div>
+
+          <motion.div custom={5} variants={contentVariants} className="w-full flex gap-2">
+            <a
+              href={navigation.neshan}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 py-1.5 px-2 bg-wedding-gold text-white font-bold font-persian-body text-xs text-center rounded-lg shadow-md hover:bg-wedding-gold/90 transition-all active:scale-95"
+            >
+              نشان
+            </a>
+            <a
+              href={navigation.googleMaps}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 py-1.5 px-2 bg-blue-600 text-white font-bold font-persian-body text-xs text-center rounded-lg shadow-md hover:bg-blue-500 transition-all active:scale-95"
+            >
+              گوگل مپ
+            </a>
           </motion.div>
 
         </div>

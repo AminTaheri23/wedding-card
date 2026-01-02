@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LoadingScreen } from './components/LoadingScreen';
 import { InvitationCard } from './components/InvitationCard';
+import { FallingPetals } from './components/FallingPetals';
 import { AppState } from './types';
 import { weddingConfig } from './config/weddingConfig';
 import { useAudio } from './hooks/useAudio';
@@ -26,7 +27,8 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-wedding-cream flex flex-col items-center justify-center overflow-hidden relative">
       <audio ref={audioRef} loop preload="auto" />
-      
+      <FallingPetals />
+
       <AnimatePresence mode="wait">
         {appState === AppState.LOADING && (
           <motion.div 
