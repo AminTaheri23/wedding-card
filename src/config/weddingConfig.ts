@@ -47,7 +47,7 @@ export const weddingConfig: WeddingConfig = {
     invitationText: "برای مشاهده کارت ضربه بزنید"
   },
   audio: {
-    url: "https://irsv.upmusics.com/Downloads/Musics/Mohammad%20Noori%20%7C%20Az%20Cheshm%20To%20Mibinam(128).mp3",
+    url: "/assets/wedding-music.mp3",
     volume: 0.5
   }
 };
