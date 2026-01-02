@@ -47,7 +47,7 @@ export const weddingConfig: WeddingConfig = {
     invitationText: "برای مشاهده کارت ضربه بزنید"
   },
   audio: {
-    url: "/assets/wedding-music.mp3",
+    url: "./assets/wedding-music.mp3",
     volume: 0.5
   }
 };
