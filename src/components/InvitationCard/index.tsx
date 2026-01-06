@@ -111,9 +111,11 @@ export const InvitationCard: React.FC = () => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-wedding-dark/80 text-white px-4 py-2 rounded-full text-sm font-persian-body z-20 pointer-events-none"
+                    className="fixed inset-0 flex items-center justify-center pointer-events-none"
                   >
-                    برای بزرگنمایی ضربه بزنید
+                    <div className="bg-wedding-dark/80 text-white px-4 py-2 rounded-full text-sm font-persian-body z-50">
+                      برای بزرگنمایی ضربه بزنید
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
