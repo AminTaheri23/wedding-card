@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { weddingConfig } from '../../config/weddingConfig';
-import { OrnamentTop, OrnamentBottom } from '../Ornament';
-import { cardVariants, contentVariants } from '../../utils/animationVariants';
+import React from "react";
+import { motion } from "framer-motion";
+import { weddingConfig } from "../../config/weddingConfig";
+import { OrnamentTop, OrnamentBottom } from "../Ornament";
+import { cardVariants, contentVariants } from "../../utils/animationVariants";
 
 export const InvitationCard: React.FC = () => {
   const { couple, event, message, navigation } = weddingConfig;
@@ -22,55 +22,23 @@ export const InvitationCard: React.FC = () => {
         <OrnamentBottom className="absolute bottom-0 left-0 w-full text-wedding-gold h-14 opacity-80" />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 py-6 text-center space-y-4">
-
-          <motion.div custom={0} variants={contentVariants} className="space-y-1 mt-3">
-            <h2 className="text-base text-wedding-gold font-persian-body">{message.greeting}</h2>
+          <motion.div
+            custom={0}
+            variants={contentVariants}
+            className="w-full flex-1 flex items-center justify-center"
+          >
+            <img
+              src="/assets/card.jpg"
+              alt="Wedding Card"
+              className="w-full h-auto object-contain rounded-lg"
+            />
           </motion.div>
 
-          <motion.div custom={1} variants={contentVariants} className="space-y-3 my-1">
-            <h1 className="text-3xl font-persian-title text-wedding-dark drop-shadow-sm leading-tight">
-              {couple.bride}
-            </h1>
-            <div className="flex items-center justify-center space-x-2 space-x-reverse text-wedding-gold">
-               <span className="h-px w-6 bg-current opacity-50"></span>
-               <span className="text-lg font-serif">و</span>
-               <span className="h-px w-6 bg-current opacity-50"></span>
-            </div>
-            <h1 className="text-3xl font-persian-title text-wedding-dark drop-shadow-sm leading-tight">
-              {couple.groom}
-            </h1>
-          </motion.div>
-
-          <motion.div custom={2} variants={contentVariants} className="w-full px-6">
-            <div className="h-px bg-gradient-to-r from-transparent via-wedding-gold/40 to-transparent"></div>
-          </motion.div>
-
-          <motion.div custom={3} variants={contentVariants} className="space-y-1.5 font-persian-body text-base text-wedding-dark/90 leading-relaxed">
-            {message.body.map((line, index) => (
-              <p key={index} className={`${index > 1 ? 'font-bold text-wedding-dark' : 'text-wedding-dark/80'}`}>
-                {line}
-              </p>
-            ))}
-          </motion.div>
-
-          <motion.div custom={4} variants={contentVariants} className="w-full space-y-2 font-persian-body text-sm text-wedding-dark bg-wedding-gold/5 p-3 rounded-lg border border-wedding-gold/10">
-            <div className="flex items-center justify-between border-b border-wedding-gold/20 pb-1.5">
-              <span className="text-wedding-gold font-bold">{event.dateLabel}</span>
-              <span>{event.date}</span>
-            </div>
-
-            <div className="flex items-center justify-between border-b border-wedding-gold/20 pb-1.5">
-              <span className="text-wedding-gold font-bold">{event.timeLabel}</span>
-              <span>{event.time}</span>
-            </div>
-
-            <div className="flex items-center justify-between border-b border-wedding-gold/20 pb-1.5">
-              <span className="text-wedding-gold font-bold">{event.locationLabel}</span>
-              <span>{event.location}</span>
-            </div>
-          </motion.div>
-
-          <motion.div custom={5} variants={contentVariants} className="w-full flex gap-2">
+          <motion.div
+            custom={1}
+            variants={contentVariants}
+            className="w-full flex gap-2"
+          >
             <a
               href={navigation.neshan}
               target="_blank"
@@ -88,7 +56,6 @@ export const InvitationCard: React.FC = () => {
               گوگل مپ
             </a>
           </motion.div>
-
         </div>
       </motion.div>
     </div>
