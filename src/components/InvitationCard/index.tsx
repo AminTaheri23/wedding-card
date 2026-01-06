@@ -28,7 +28,7 @@ export const InvitationCard: React.FC = () => {
             className="w-full flex-1 flex items-center justify-center"
           >
             <img
-              src="/assets/card.jpg"
+              src="./assets/card.jpg"
               alt="Wedding Card"
               className="w-full h-auto object-contain rounded-lg"
             />
