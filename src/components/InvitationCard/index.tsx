@@ -99,24 +99,26 @@ export const InvitationCard: React.FC = () => {
           <OrnamentBottom className="absolute bottom-0 left-0 w-full text-wedding-gold h-14 opacity-80" />
 
           <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 py-6 text-center space-y-4">
+            <AnimatePresence>
+              {showHint && !isZoomed && (
+                <motion.div
+                  variants={hintVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="fixed inset-0 flex items-center justify-center pointer-events-none z-50"
+                >
+                  <div className="bg-wedding-dark/80 text-white px-4 py-2 rounded-full text-sm font-persian-body">
+                    برای بزرگنمایی ضربه بزنید
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
             <motion.div
               custom={0}
               variants={contentVariants}
               className="w-full flex-1 flex items-center justify-center relative"
             >
-              <AnimatePresence>
-                {showHint && !isZoomed && (
-                  <motion.div
-                    variants={hintVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-wedding-dark/80 text-white px-4 py-2 rounded-full text-sm font-persian-body z-20 pointer-events-none"
-                  >
-                    برای بزرگنمایی ضربه بزنید
-                  </motion.div>
-                )}
-              </AnimatePresence>
               <motion.div
                 variants={zoomContainerVariants}
                 animate={isZoomed ? "zoomed" : "normal"}
