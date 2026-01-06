@@ -5,7 +5,7 @@ import { OrnamentTop, OrnamentBottom } from "../Ornament";
 import { cardVariants, contentVariants } from "../../utils/animationVariants";
 
 export const InvitationCard: React.FC = () => {
-  const { couple, event, message, navigation } = weddingConfig;
+  const { navigation } = weddingConfig;
 
   return (
     <div className="w-full max-w-xs p-3 perspective-1000">
