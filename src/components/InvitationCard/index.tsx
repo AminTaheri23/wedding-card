@@ -13,6 +13,12 @@ export const InvitationCard: React.FC = () => {
   const { navigation } = weddingConfig;
   const [isZoomed, setIsZoomed] = useState(false);
   const [showHint, setShowHint] = useState(true);
+  const [scale, setScale] = useState(1);
+  const [initialDistance, setInitialDistance] = useState(0);
+  const [initialScale, setInitialScale] = useState(1);
+  const [tapTimer, setTapTimer] = useState<ReturnType<
+    typeof setTimeout
+  > | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -21,8 +27,60 @@ export const InvitationCard: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const getDistance = (touches: React.TouchList) => {
+    if (touches.length < 2) return 0;
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      const distance = getDistance(e.touches);
+      setInitialDistance(distance);
+      setInitialScale(scale);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length === 2 && initialDistance > 0) {
+      const distance = getDistance(e.touches);
+      const scaleChange = distance / initialDistance;
+      const newScale = Math.min(Math.max(initialScale * scaleChange, 1), 3);
+      setScale(newScale);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setInitialDistance(0);
+    if (scale <= 1) {
+      setIsZoomed(false);
+    } else {
+      setIsZoomed(true);
+    }
+  };
+
   const handleImageClick = () => {
-    setIsZoomed(!isZoomed);
+    if (tapTimer) {
+      clearTimeout(tapTimer);
+      setTapTimer(null);
+      setScale(1);
+      setIsZoomed(false);
+    } else {
+      const timer = setTimeout(() => {
+        if (!isZoomed) {
+          setScale(1.25);
+          setIsZoomed(true);
+        }
+        setTapTimer(null);
+      }, 300);
+      setTapTimer(timer);
+    }
+  };
+
+  const handleZoomClick = () => {
+    setScale(1);
+    setIsZoomed(false);
   };
 
   return (
@@ -62,8 +120,11 @@ export const InvitationCard: React.FC = () => {
               <motion.div
                 variants={zoomContainerVariants}
                 animate={isZoomed ? "zoomed" : "normal"}
-                className="cursor-pointer"
+                className="cursor-pointer touch-none"
                 onClick={handleImageClick}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
               >
                 <img
                   src="./assets/card.jpg"
@@ -106,17 +167,23 @@ export const InvitationCard: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 overflow-auto"
-            onClick={handleImageClick}
+            onClick={handleZoomClick}
           >
             <motion.img
               src="./assets/card.jpg"
               alt="Wedding Card Zoomed"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
+              initial={{ scale: 1 }}
+              animate={{ scale }}
+              exit={{ scale: 1 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="max-w-full max-h-full object-contain cursor-pointer"
-              onClick={(e) => e.stopPropagation()}
+              className="max-w-full max-h-full object-contain cursor-pointer touch-none"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleImageClick();
+              }}
             />
           </motion.div>
         )}
